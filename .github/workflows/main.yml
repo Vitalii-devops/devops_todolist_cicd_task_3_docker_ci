@@ -58,6 +58,7 @@ jobs:
           path: .
 
   docker-ci:
+    needs: python-ci
     runs-on: ubuntu-latest
     if: github.ref_name == 'main'
 
@@ -74,7 +75,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
 
-          
+
       - name: Build and Push Docker image
         uses: docker/build-push-action@v6
         with:
